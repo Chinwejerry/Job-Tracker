@@ -7,10 +7,12 @@ function App() {
   const [filter, setFilter] = useState("All");
   const [loading, setLoading] = useState(true);
 
+  const API_URL = "https://job-tracker-backend-7au1.onrender.com/api/jobs";
+
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const res = await fetch("http://localhost:5001/api/jobs");
+        const res = await fetch(API_URL);
         const data = await res.json();
         setJobs(data);
       } catch (error) {
@@ -29,7 +31,7 @@ function App() {
 
   const handleStatusChange = async (id, status) => {
     try {
-      const res = await fetch(`http://localhost:5001/api/jobs/${id}`, {
+      const res = await fetch(`API_URL${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -50,7 +52,7 @@ function App() {
     if (!window.confirm("Delete this job application?")) return;
 
     try {
-      await fetch(`http://localhost:5001/api/jobs/${id}`, {
+      await fetch(`API_URL${id}`, {
         method: "DELETE",
       });
 

@@ -8,6 +8,8 @@ function JobForm({ onJobAdded }) {
     status: "Applied",
   });
 
+  const API_URL = "https://job-tracker-backend-7au1.onrender.com/api/jobs";
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -19,7 +21,7 @@ function JobForm({ onJobAdded }) {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5001/api/jobs", {
+      const res = await fetch(API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
