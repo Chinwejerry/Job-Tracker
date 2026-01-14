@@ -31,7 +31,7 @@ function App() {
 
   const handleStatusChange = async (id, status) => {
     try {
-      const res = await fetch(`API_URL${id}`, {
+      const res = await fetch(`${API_URL}/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -52,7 +52,7 @@ function App() {
     if (!window.confirm("Delete this job application?")) return;
 
     try {
-      await fetch(`API_URL${id}`, {
+      await fetch(`${API_URL}/${id}`, {
         method: "DELETE",
       });
 
